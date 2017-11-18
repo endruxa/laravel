@@ -17,12 +17,7 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
-            $data = $request->except('_token');
-            $data = array_merge($data,
-                [
-                    'slug' => str_slug($request->get('title'))
-                ]);
-            Article::create($data);
+            Article::create($request->all());
         return redirect()->route('blog.index');
     }
 
