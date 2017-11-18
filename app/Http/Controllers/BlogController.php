@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 use DB;
 
@@ -14,36 +15,29 @@ class BlogController extends Controller
      return view('blog.store');
     }
 
-    public function store(Request $data)
+    public function store(Request $request)
     {
-        if ($data->isMethod('post')) {
-            $request = $data->except('_token');
-            $request = array_merge($request,
+            $data = $request->except('_token');
+            $data = array_merge($data,
                 [
-                    'slug' => str_slug($data->get('title')),
-                    'created_at' => new \DateTime(),
-                    'updated_at' => new \DateTime()
+                    'slug' => str_slug($request->get('title'))
                 ]);
-
-            DB::table('articles')->insert($request);
-        }
+            Article::create($data);
         return redirect()->route('blog.index');
     }
 
     public function index()
     {
-        $result=DB::table('articles')
-            ->orderBy('updated_at', 'DESC')
+        $articles=Article::orderBy('updated_at', 'DESC')
             ->paginate(static::PER_PAGE);
 
-        return view('blog.index', ['result'=>$result]);
+        return view('blog.index', ['articles'=>$articles]);
     }
 
     public function show($slug)
     {
-        $result=DB::table('articles')
-            ->where('slug', $slug)
+        $article=Article::where('slug', $slug)
             ->first();
-        return view('blog.index', ['result'=>$result]);
+        return view('blog.index', ['article'=>$article]);
     }
 }

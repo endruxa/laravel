@@ -1,20 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    @foreach($result as $article)
+    @foreach($articles as $article)
         <section>
             <h2>
-                <a href="{{route('blog.show', ['slug'=>$article->slug])}}">{{$article->title}}</a>
+                <a href="{{ route('blog.show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
             </h2>
-            <div>
-                {{$article->description}}
-            </div>
+            <div>{{ $article->description }}</div>
         </section>
-
     @endforeach
 
-{{$result->render()}}
-
+    {{ $articles->render() }}
 @endsection
 
-@section('title', 'Blog')
+@section('title', 'Блог')
