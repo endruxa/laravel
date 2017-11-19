@@ -20,9 +20,9 @@
      </div>
     <hr>
 
-    {{--<footer>
+    <footer>
         <p>&copy; 2017</p>
-    </footer>--}}
+    </footer>
 
 @endsection
 

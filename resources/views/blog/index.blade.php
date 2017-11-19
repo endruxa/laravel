@@ -4,7 +4,7 @@
     @foreach($articles as $article)
         <section>
             <h2>
-                <a href="{{ route('blog.show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
+                <a href="{{ route('blade.show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
             </h2>
             <div>{{ $article->description }}</div>
         </section>

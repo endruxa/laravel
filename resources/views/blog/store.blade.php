@@ -1,21 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+        {{form::open()}}
 
-    <form action="{{route('blog.store')}}" method="post" >
-        <div class="form-group">
-            <label for="title">Fresh News</label>
-            <input name="title" type="text" class="form-control" id="title" placeholder="Fresh News">
-        </div>
-        <div class="form-group">
-            <label for="description">Content</label>
-            <textarea  name="description" class="form-control" id="description" rows="3"></textarea>
-        </div>
+            @include('blog._form', ['btnText'=>'Создать'])
 
-        {{csrf_field()}}
+        {{form::close()}}
 
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>
-    @endsection
-
-@section('title', 'News blog')
+@endsection
+@section('title', 'Добавить запсиь в блог')

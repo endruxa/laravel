@@ -29,10 +29,21 @@ class BlogController extends Controller
         return view('blog.index', ['articles'=>$articles]);
     }
 
-    public function show($slug)
+    public function show(Article $article)
     {
-        $article=Article::where('slug', $slug)
-            ->first();
         return view('blog.index', ['article'=>$article]);
+    }
+
+    public function edit(Article $article)
+    {
+        return view('blog.edit', [
+            'article' => $article
+        ]);
+    }
+
+    public function update(Article $article, Request $request)
+    {
+        $article->update($request->all());
+        return redirect()->route('blog.index');
     }
 }
