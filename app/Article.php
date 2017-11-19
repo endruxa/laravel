@@ -24,6 +24,7 @@ use Illuminate\Http\Request;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\User $user
  */
 class Article extends Model
 
