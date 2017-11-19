@@ -19,8 +19,9 @@ Route::group(['prefix' => 'db'], function(){
 Route::group(['prefix'=>'blog'], function (){
    Route::get('/', 'BlogController@index')->name('blog.index');
    Route::get('/{article}/show', 'BlogController@show')->name('blog.show');
-   Route::get('blog', 'BlogController@add');
-   Route::post('blog', 'BlogController@store')->name('blog.store');
-   Route::put('blog', 'BlogController@edit')->name('blog.store');
+   Route::get('add', 'BlogController@add');
+   Route::post('add', 'BlogController@store')->name('blog.store');
+   Route::put('/{article}/edit', 'BlogController@edit')->name('blog.edit');
+   Route::put('/{article}/update', 'BlogController@edit')->name('blog.update');
 
 });
