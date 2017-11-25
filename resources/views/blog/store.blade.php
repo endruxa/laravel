@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-        {{form::open()}}
+        {{Form::open()}}
 
             @include('blog._form', ['btnText'=>'Создать'])
 
-        {{form::close()}}
+        {{Form::close()}}
 
 @endsection
 @section('title', 'Добавить запсиь в блог')
