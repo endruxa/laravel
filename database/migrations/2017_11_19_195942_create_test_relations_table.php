@@ -15,8 +15,8 @@ class CreateTestRelationsTable extends Migration
     {
         Schema::create('test_relations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('test_id')->unsigned;
-            $table->string('addres')->nullable;
+            $table->integer('test_id')->unsigned();
+            $table->string('addres')->nullable();
             $table->timestamps();
 
             $table->foreign('test_id')

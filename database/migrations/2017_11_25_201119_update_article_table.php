@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class IndexArticles extends Migration
+class UpdateArticleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,13 @@ class IndexArticles extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('slug');
-            $table->string('title')->index();
-            $table->text('description');
-            $table->timestamps();
+
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
@@ -30,7 +32,8 @@ class IndexArticles extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->dropIndex('articles_title_index');
+            $table->dropForeign(['user_id']);
+            $table->dropcolumn('user_id');
         });
     }
 }
