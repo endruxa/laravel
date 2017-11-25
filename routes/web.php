@@ -22,6 +22,6 @@ Route::group(['prefix'=>'blog'], function (){
    Route::get('add', 'BlogController@add');
    Route::post('add', 'BlogController@store')->name('blog.store');
    Route::put('/{article}/edit', 'BlogController@edit')->name('blog.edit');
-   Route::put('/{article}/update', 'BlogController@edit')->name('blog.update');
+   Route::put('/{article}/update', 'BlogController@update')->name('blog.update');
 
 });
