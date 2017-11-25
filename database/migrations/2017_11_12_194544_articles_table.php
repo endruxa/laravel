@@ -14,7 +14,7 @@ class ArticlesTable extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->unique('slug');
+            $table->string('slug')->unique();
         });
     }
 
