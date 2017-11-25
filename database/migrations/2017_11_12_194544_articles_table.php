@@ -14,7 +14,8 @@ class ArticlesTable extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->string('slug')->unique();
+
+            $table->string('slug')->unique()->change();
         });
     }
 
@@ -26,6 +27,7 @@ class ArticlesTable extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
+
             $table->dropIndex('articles_slug_unique');
         });
     }
