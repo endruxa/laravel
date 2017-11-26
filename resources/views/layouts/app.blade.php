@@ -14,7 +14,7 @@
     <div class="container">
         <h1>Hello, world!</h1>
         <p>Welcome</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">News &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="{{route('blog.index')}}" role="button">News &raquo;</a></p>
     </div>
 </div>
 <div class="container">

@@ -22,6 +22,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ route('home') }}">Главная</a></li>
                         <li><a href="{{ route('about') }}">О нас</a></li>
+                        <li><a href="{{ route('blog.index') }}">Блог</a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>

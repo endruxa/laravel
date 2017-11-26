@@ -46,4 +46,10 @@ class BlogController extends Controller
         $article->update($request->all());
         return redirect()->route('blog.index');
     }
+
+    public function delete(Article $article)
+    {
+        $article->delete();
+        return view('blog.show', ['article'=>$article]);
+    }
 }
