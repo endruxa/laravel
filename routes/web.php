@@ -8,7 +8,7 @@ Route::get('about', 'HomeController@about')->name('about');
 /*
  * Database testing
  */
-Route::group(['prefix' => 'db'], function(){
+    Route::group(['prefix' => 'db'], function(){
     Route::get('insert', 'DBController@insert');
     Route::get('select', 'DBController@select');
 });
@@ -16,7 +16,7 @@ Route::group(['prefix' => 'db'], function(){
 /*
  * Articles area
  */
-Route::group(['prefix'=>'blog'], function (){
+   Route::group(['prefix'=>'blog'], function (){
    Route::get('/', 'BlogController@index')->name('blog.index');
    Route::get('/{article}/show', 'BlogController@show')->name('blog.show');
    Route::get('add', 'BlogController@add');

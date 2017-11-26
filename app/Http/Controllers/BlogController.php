@@ -50,6 +50,6 @@ class BlogController extends Controller
     public function delete(Article $article)
     {
         $article->delete();
-        return view('blog.show', ['article'=>$article]);
+        return redirect()->route('blog.show');
     }
 }
