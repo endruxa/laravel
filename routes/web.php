@@ -13,6 +13,11 @@ Route::get('about', 'HomeController@about')->name('about');
     Route::get('select', 'DBController@select');
 });
 
+
+    Route::get('validate', 'ValidateController@index');
+    Route::get('validate/form', 'ValidateController@form');
+    Route::post('validate/form', 'ValidateController@store');
+
 /*
  * Articles area
  */
@@ -26,3 +31,22 @@ Route::get('about', 'HomeController@about')->name('about');
    Route::put('/{article}/delete', 'BlogController@delete')->name('blog.delete');
 
 });
+
+
+   /*
+    *Request Area
+   */
+
+   Route::group(['prefix'=>'request'], function ()
+   {
+      Route::get('/', 'RequestController@index');
+      Route::post('/', 'RequestController@putData');
+   });
+
+   Route::group(['prefix'=>'dashboard', 'namespace'=>'Admin', 'middleware'=>'admin'], function()
+   {
+       Route::get('/', 'DashboardController@index')->name('dashboard.main');
+   });
+
+
+
