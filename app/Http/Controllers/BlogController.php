@@ -10,6 +10,11 @@ class BlogController extends Controller
 {
     const PER_PAGE = 15;
 
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function add()
     {
      return view('blog.store');

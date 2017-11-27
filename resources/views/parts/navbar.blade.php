@@ -11,7 +11,6 @@
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
-        <div id="navbarsExampleDefault" class="navbar-collapse collapse">
             <div class="navbar-form navbar-right">
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -19,10 +18,14 @@
                 </form>
             </div>
                 <div class="form-group">
-                    <ul class="nav navbar-nav navbar-right">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-left">
                         <li><a href="{{ route('home') }}">Главная</a></li>
                         <li><a href="{{ route('about') }}">О нас</a></li>
                         <li><a href="{{ route('blog.index') }}">Блог</a></li>
+                    </ul>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -51,5 +54,4 @@
                 </div>
             </form>
         </div>
-    </div>
 </nav>

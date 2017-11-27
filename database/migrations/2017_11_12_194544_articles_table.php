@@ -28,7 +28,7 @@ class ArticlesTable extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
 
-            $table->dropIndex('articles_slug_unique');
+            $table->dropUnique('articles_slug_unique');
         });
     }
 }
