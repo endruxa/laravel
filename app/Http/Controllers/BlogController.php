@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Requests\BlogRequestController;
 use Illuminate\Http\Request;
 use DB;
 
@@ -20,9 +21,14 @@ class BlogController extends Controller
      return view('blog.store');
     }
 
-    public function store(Request $request)
+    public function store(BlogRequestController $request)
     {
-            Article::create($request->all());
+            //Article::create($request->all());
+        $request
+            ->user()
+            ->articles()
+            ->create($request->all());
+
         return redirect()->route('blog.index');
     }
 
@@ -46,7 +52,7 @@ class BlogController extends Controller
         ]);
     }
 
-    public function update(Article $article, Request $request)
+    public function update(Article $article, BlogRequestController $request)
     {
         $article->update($request->all());
         return redirect()->route('blog.index');
