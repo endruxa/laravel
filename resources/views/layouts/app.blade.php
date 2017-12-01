@@ -22,7 +22,7 @@
 </div>
 
 @yield('ad')
-    <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}"></script>
 @yield('footer.js')
 </body>
