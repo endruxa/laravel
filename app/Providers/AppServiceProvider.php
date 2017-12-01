@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Carbon::setLocale( config('app.locale') );
-        Schema::defaultStringLength(191);
+        /*Schema::defaultStringLength(191);*/
     }
 
     /**
@@ -26,9 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
+       /* if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
+        }*/
     }
 
 }
