@@ -21,14 +21,14 @@ Route::get('about', 'HomeController@about')->name('about');
 /*
  * Articles area
  */
-   Route::group(['prefix'=>'blog'], function (){
+   Route::group(['prefix'=>'blog', 'middleware'=>'auth'], function (){
    Route::get('/', 'BlogController@index')->name('blog.index');
    Route::get('/{article}/show', 'BlogController@show')->name('blog.show');
    Route::get('add', 'BlogController@add');
-   Route::post('add', 'BlogController@store')->name('blog.store')->middleware('auth');
-   Route::put('/{article}/edit', 'BlogController@edit')->name('blog.edit')->middleware('auth');
-   Route::put('/{article}/update', 'BlogController@update')->name('blog.update')->middleware('auth');
-   Route::put('/{article}/delete', 'BlogController@delete')->name('blog.delete')->middleware('auth');
+   Route::post('add', 'BlogController@store')->name('blog.store');
+   Route::post('/{article}/edit', 'BlogController@edit')->name('blog.edit');
+   Route::post('/{article}/update', 'BlogController@update')->name('blog.update');
+   Route::put('/{article}/delete', 'BlogController@delete')->name('blog.delete');
 
 });
 

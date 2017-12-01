@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+        {{csrf_field()}}
     @foreach($articles as $article)
         <section>
             <h2>
