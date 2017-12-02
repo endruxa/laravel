@@ -54,10 +54,14 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pivot ()
+    public function tag()
     {
-        return $this->belongsToMany(Pivot::class);
+        return $this->belongsToMany(Tag::class);
+    }
 
+    public function getTagIdAttribute()
+    {
+        return $this->tag()->pluck('id');
     }
 }
 

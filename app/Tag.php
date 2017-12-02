@@ -6,24 +6,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    protected $fillable = ['slug', 'name'];
+    protected $fillable = ['title'];
 
+    public $timestamps = false;
 
-    public function setSlugAttribute ()
+    public function setTitleAttribute($value)
     {
-        $this->attributes['name'] = $name;
-        $this->attributes['slug'] = str_slug($name);
-        return $this;
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = str_slug($value);
     }
 
-    public function getSlugRouteName ()
+    public static function tagList()
     {
-        return 'slug';
+        return static::pluck('title', 'id')->toArray();
+    }
+
+    public static function share ()
+    {
+        \View::composer('blog._form', function($view)
+        {
+           $view->with('tagList', static::tagList());
+        });
     }
 
     public function tag ()
     {
-        return $this->belongsToMany(Pivot::class);
+        return $this->belongsToMany(Article::class);
     }
 
 }
