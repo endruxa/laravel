@@ -21,7 +21,7 @@ class Tag extends Model
         return static::pluck('title', 'id')->toArray();
     }
 
-    public static function share ()
+    public static function share()
     {
         \View::composer('blog._form', function($view)
         {
@@ -29,9 +29,9 @@ class Tag extends Model
         });
     }
 
-    public function tag ()
+   /* public function tag()
     {
         return $this->belongsToMany(Article::class);
-    }
+    }*/
 
 }

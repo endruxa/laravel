@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-        {{csrf_field()}}
-    @foreach($articles as $article)
+        @if(Auth::check())
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{route('blog.add')}}}" class="btn btn-success btn-lg">Добавіть статью</a>
+                </div>
+            </div>
+        @endif
+        @foreach($articles as $article)
         <section>
             <h2>
                 <a href="{{ route('blog.show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
@@ -20,3 +26,4 @@
 @endsection
 
 @section('title', 'Блог')
+

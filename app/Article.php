@@ -61,7 +61,7 @@ class Article extends Model
 
     public function getTagIdAttribute()
     {
-        return $this->tag()->pluck('id');
+        return $this->tags()->pluck('id');
     }
 }
 

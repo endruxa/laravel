@@ -32,7 +32,7 @@ class BlogController extends Controller
                 ->articles()
                 ->create($request->all());
 
-            $article->tag()->attach($tagsIds);
+            $article->tags()->attach($tagsIds);
             DB::commit();
         }catch (\Exception $e)
         {
@@ -68,7 +68,7 @@ class BlogController extends Controller
             $tagsId = $request->get('tagId');
             $article->update($request->all());
 
-            $article->tag()->sync($tagsId);
+            $article->tags()->sync($tagsId);
 
             DB::commit();
         }catch (\Exception $e){
