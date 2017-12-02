@@ -53,5 +53,11 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function pivot ()
+    {
+        return $this->belongsToMany(Pivot::class);
+
+    }
 }
 

@@ -21,6 +21,9 @@ class Tag extends Model
         return 'slug';
     }
 
-
+    public function tag ()
+    {
+        return $this->belongsToMany(Pivot::class);
+    }
 
 }
