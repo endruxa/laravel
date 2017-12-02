@@ -23,9 +23,12 @@ class BlogRequestController extends FormRequest
      */
     public function rules()
     {
+        $tagsIds = \App\Tag::pluck('id');
+
         $rules = [
             'title'=>'required|min:3|unique:articles|alpha_dash',
-            'description'=>'required'
+            'description'=>'required',
+            'tagId.*'=>'required|in:' .implode(',', $tagsIds->toArray())
         ];
         if ('blog.update' == array_get($this->route()->action, 'as')) {
             $rules['title'] = 'required|min:3|unique:articles,title,' . $this->article->id;

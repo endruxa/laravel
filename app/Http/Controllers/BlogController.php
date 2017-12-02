@@ -24,11 +24,20 @@ class BlogController extends Controller
     public function store(BlogRequestController $request)
     {
             //Article::create($request->all());
-        $request
-            ->user()
-            ->articles()
-            ->create($request->all());
+        $tagsIds = $request->get('tagId');
+        try {
+            DB::beginTransaction();
+            $article = $request
+                ->user()
+                ->articles()
+                ->create($request->all());
 
+            $article->tag()->attach($tagsIds);
+            DB::commit();
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+        }
         return redirect()->route('blog.index');
     }
 
@@ -54,7 +63,17 @@ class BlogController extends Controller
 
     public function update(Article $article, BlogRequestController $request)
     {
-        $article->update($request->all());
+        try {
+            DB::beginTransaction();
+            $tagsId = $request->get('tagId');
+            $article->update($request->all());
+
+            $article->tag()->sync($tagsId);
+
+            DB::commit();
+        }catch (\Exception $e){
+            DB::rollBack();
+        }
         return redirect()->route('blog.index');
     }
 

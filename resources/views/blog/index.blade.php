@@ -8,6 +8,11 @@
                 <a href="{{ route('blog.show', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
             </h2>
             <div>{{ $article->description }}</div>
+            <div class="tag-list">
+                @foreach($article->tags as $tag)
+                    <span class="label{{getLabelClass()}}">{{$tag->title}}</span>
+                @endforeach
+            </div>
         </section>
     @endforeach
 
