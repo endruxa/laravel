@@ -18,24 +18,23 @@ class BlogController extends Controller
 
     public function add()
     {
-     return view('blog.store');
+     return view('blog.add');
     }
 
     public function store(BlogRequestController $request)
     {
-            //Article::create($request->all());
         $tagsIds = $request->get('tag_id');
         try {
             DB::beginTransaction();
-            $article = $request
+           $article = $request
                 ->user()
                 ->articles()
                 ->create($request->all());
 
             $article->tags()->attach($tagsIds);
             DB::commit();
-        }catch (\Exception $e)
-        {
+        }catch (\Exception $e) {
+            dd($e);
             DB::rollBack();
         }
         return redirect()->route('blog.index');
@@ -65,11 +64,10 @@ class BlogController extends Controller
     {
         try {
             DB::beginTransaction();
-            $tagsId = $request->get('tagId');
+            $tagsIds = $request->get('tag_id');
             $article->update($request->all());
 
-            $article->tags()->sync($tagsId);
-
+            $article->tags()->sync($tagsIds);
             DB::commit();
         }catch (\Exception $e){
             DB::rollBack();
