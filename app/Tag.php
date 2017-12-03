@@ -23,7 +23,7 @@ class Tag extends Model
 
     public static function share()
     {
-        \View::composer('article._form', function($view){
+        \View::composer('blog._form', function($view){
             $view->with('tagList', static::tagList());
         });
     }

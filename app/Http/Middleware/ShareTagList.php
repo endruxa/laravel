@@ -15,7 +15,7 @@ class ShareTagList
      */
     public function handle($request, Closure $next)
     {
-        View::composer('article._form', function($view){
+        View::composer('blog._form', function($view){
             $view->with('tagList', Tag::tagList());
         });
         return $next($request);
