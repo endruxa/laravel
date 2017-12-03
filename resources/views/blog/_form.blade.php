@@ -9,7 +9,7 @@
 
 <div class="form-group">
     {{Form::label('description','Тэги')}}
-    {{Form::select('tagId[]', $tagList ,null, ['class'=>'form-control js-select', 'multiple'])}}
+    {{Form::select('tag_id[]', $tagList ,null, ['class'=>'form-control js-select', 'multiple'])}}
 </div>
 
 <button type="submit" class="btn btn-primary">{{ $btnText }}</button>

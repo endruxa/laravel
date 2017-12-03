@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Middleware;
-
+use App\Tag;
 use Closure;
+use View;
 
-class Share
+class ShareTagList
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class Share
      */
     public function handle($request, Closure $next)
     {
-        \View::composer('blade._form', function($view){
-            $view->with('tagList', \App\Tag::tagList());
+        View::composer('article._form', function($view){
+            $view->with('tagList', Tag::tagList());
         });
-
         return $next($request);
     }
+
 }

@@ -24,7 +24,6 @@ use Illuminate\Http\Request;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \App\User $user
  */
 class Article extends Model
 
@@ -54,7 +53,7 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function tag()
+    public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }
