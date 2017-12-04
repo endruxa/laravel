@@ -11,3 +11,11 @@ function getLabelClass()
     ];
     return array_random($classes);
 }
+
+/**
+ * @return \App\Classes\Flash
+ */
+function flash()
+{
+    return new \App\Classes\Flash();
+}

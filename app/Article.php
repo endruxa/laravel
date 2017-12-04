@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 
 
@@ -28,6 +29,8 @@ use Illuminate\Http\Request;
 class Article extends Model
 
 {
+    const PER_PAGE = 15;
+
     protected $fillable=['title', 'description', 'slug'];
 
     /**

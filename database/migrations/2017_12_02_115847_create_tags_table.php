@@ -20,7 +20,7 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('pivot', function(Blueprint $table)
+        Schema::create('article_tag', function(Blueprint $table)
         {
             $table->integer('article_id')->unsigned()->index();
             $table->integer('tag_id')->unsigned()->index();
@@ -37,7 +37,7 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::table('pivot', function (Blueprint $table)
+        Schema::table('article_tag', function (Blueprint $table)
         {
             $table->dropForeign(['article_id']);
             $table->dropForeign(['tag_id']);
@@ -46,7 +46,7 @@ class CreateTagsTable extends Migration
             $table->dropIndex(['tag_id']);
         });
 
-        Schema::dropIfExists('pivot');
+        Schema::dropIfExists('article_tag');
 
         Schema::dropIfExists('tags');
     }

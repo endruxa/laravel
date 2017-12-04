@@ -18,6 +18,14 @@ Route::get('about', 'HomeController@about')->name('about');
     Route::get('validate/form', 'ValidateController@form');
     Route::post('validate/form', 'ValidateController@store');
 
+
+/*
+ * Tag page
+ */
+
+Route::get('blog/tag/{tag_slug}', 'TagController@index')->name('tag');
+
+
 /*
  * Articles area
  */

@@ -34,7 +34,6 @@ class BlogController extends Controller
             $article->tags()->attach($tagsIds);
             DB::commit();
         }catch (\Exception $e) {
-            dd($e);
             DB::rollBack();
         }
         return redirect()->route('blog.index');

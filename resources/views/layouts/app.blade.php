@@ -14,9 +14,11 @@
 @include('parts.navbar')
 <div class="jumbotron">
     <div class="container">
-        <h1>Hello, world!</h1>
-        <p>Welcome</p>
-        <p><a class="btn btn-primary btn-lg" href="{{route('blog.index')}}" role="button">News &raquo;</a></p>
+        @if (session()->has('flash'))
+           <h1>Hello, world!</h1>
+           <p>Welcome</p>
+            <div class="alert alert-{{ session('flash.type', 'danger') }}">{{ session('flash.message') }}</div>
+        @endif
     </div>
 </div>
 <div class="container">
