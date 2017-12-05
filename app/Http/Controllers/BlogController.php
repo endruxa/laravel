@@ -6,14 +6,16 @@ use App\Article;
 use App\Http\Requests\BlogRequestController;
 use Illuminate\Http\Request;
 use DB;
+use League\Flysystem\Exception;
 
 class BlogController extends Controller
 {
-    const PER_PAGE = 15;
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')
+            ->except(['index', 'show']
+            );
     }
 
     public function add()
@@ -30,26 +32,38 @@ class BlogController extends Controller
                 ->user()
                 ->articles()
                 ->create($request->all());
-
             $article->tags()->attach($tagsIds);
+
             DB::commit();
+            flash()->success('Новость добавлена');
+
         }catch (\Exception $e) {
+
             DB::rollBack();
+            flash()->danger('Новость не добавлена');
         }
+
         return redirect()->route('blog.index');
     }
 
+
     public function index()
     {
-        $articles=Article::orderBy('updated_at', 'DESC')
-            ->paginate(static::PER_PAGE);
+        $articles = Article::with('tags')
+            ->orderBy('updated_at', 'DESC')
+            ->paginate(Article::PER_PAGE);
 
-        return view('blog.index', ['articles'=>$articles]);
+        return view('blog.index',
+            ['articles' => $articles]
+        );
     }
+
 
     public function show(Article $article)
     {
-        return view('blog.show', ['article'=>$article]);
+        return view('blog.show',
+            ['article'=>$article]
+        );
     }
 
     public function edit(Article $article)
@@ -68,7 +82,12 @@ class BlogController extends Controller
 
             $article->tags()->sync($tagsIds);
             DB::commit();
+
+            flash()->success('Новость добавлена');
+
         }catch (\Exception $e){
+            flash()->danger('Новость не удалось добавить');
+
             DB::rollBack();
         }
         return redirect()->route('blog.index');
