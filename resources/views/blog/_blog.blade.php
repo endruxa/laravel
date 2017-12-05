@@ -12,5 +12,7 @@
             @endforeach
         </div>
 </section>
+
 @endforeach
-{{$articles->render}}
+
+{{$articles->render()}}

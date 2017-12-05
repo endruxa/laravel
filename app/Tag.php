@@ -17,7 +17,7 @@ class Tag extends Model
     }
 
     /**
-     * @return static
+     * @return mixed
      */
 
     public static function tagList()
