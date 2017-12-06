@@ -62,7 +62,7 @@ class BlogController extends Controller
     public function show(Article $article)
     {
         return view('blog.show',
-            ['article'=>$article]
+            ['article' => $article]
         );
     }
 

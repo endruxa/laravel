@@ -11,7 +11,7 @@ class TagController extends Controller
     {
         $tag_slug = Tag::with('articles.tags')
             ->where('slug', $tag_slug)
-            ->firstOrFail();
+            ->get();
         $tag_slug->setRelation(
             'articles',
             $tag_slug->articles()->paginate(Article::PER_PAGE)
