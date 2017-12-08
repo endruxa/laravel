@@ -163,7 +163,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Spatie\Glide\GlideServiceProvider::class,
+        Dan\UploadImage\UploadImageServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -233,7 +234,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'GlideImage' => Spatie\Glide\GlideImageFacade::class,
+        'UploadImage' => Dan\UploadImage\UploadImageFacade::class,
     ],
 
 ];
