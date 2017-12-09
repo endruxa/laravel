@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use DB;
 use League\Flysystem\Exception;
 
+/**
+ * Class BlogController
+ * @package App\Http\Controllers
+ */
 class BlogController extends Controller
 {
 
@@ -23,6 +27,10 @@ class BlogController extends Controller
      return view('blog.add');
     }
 
+    /**
+     * @param BlogRequestController $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(BlogRequestController $request)
     {
         $tagsIds = $request->get('tag_id');

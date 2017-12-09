@@ -54,7 +54,7 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
-    public function uploadfile()
+    public function uploadFile()
     {
         return $this->hasMany(UploadFile::class);
     }

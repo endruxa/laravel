@@ -5,9 +5,11 @@
             </h2>
             <div>{{ $article->description }}</div>
             <div class="tag-list">
+                @foreach($article->tags as $tag)
                     <a class="label {{ getLabelClass() }}" href="{{ route('tag', ['tag_slug' => $tag->slug]) }}">
                         {{ $tag->title }}
                     </a>
+                @endforeach
             </div>
         </section>
 @endforeach

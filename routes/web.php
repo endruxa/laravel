@@ -28,7 +28,7 @@ Route::get('blog/tag/{tag_slug}', 'TagController@index')->name('tag');
 /*
  * UploadFile
  */
-Route::post('upload', 'UploadController@uploadFile')->name('upload');
+Route::post('blog/add/upload', 'UploadController@uploadFile')->name('upload');
 
 
 /*

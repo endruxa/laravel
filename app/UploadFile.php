@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UploadFile extends Model
 {
 
-    protected $fillable = ['title', 'filename'];
+    protected $fillable = ['image', 'filename'];
 
 
     public function setTitleAttribute($title, $filename)
