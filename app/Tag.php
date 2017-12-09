@@ -32,6 +32,7 @@ class Tag extends Model
         return static::pluck('title', 'id')->toArray();
     }
 
+
     public static function share()
     {
         \View::composer('blog._form', function ($view) {

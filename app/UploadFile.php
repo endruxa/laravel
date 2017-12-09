@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class UploadFile extends Model
 {
 
-    protected $fillable = ['image', 'filename'];
+    protected $fillable = ['file_name'];
 
 
-    public function setTitleAttribute($title, $filename)
+    public function setTitleAttribute($filename)
     {
-        $this->attributes['title'] = $title;
-        $this->attributes['filename'] = $filename;
-
+        $this->attributes['title'] = str_random(4).'_'.$filename;
+        $this->attributes['file_name'] = $filename;
     }
 
     public function user()

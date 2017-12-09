@@ -6,8 +6,8 @@
         {{Form::open()}}
             @include('blog._form', ['btnText'=>'Создать'])
         {{Form::close()}}
+    @include('uploadFile._uploadFile')
 
-            @include('uploadFile._uploadFile', [''])
 
 @endsection
 

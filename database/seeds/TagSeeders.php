@@ -2,14 +2,14 @@
 
 use Illuminate\Database\Seeder;
 
-class TagSeeds extends Seeder
+class TagSeeders extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+        public function run()
     {
         $tags = [
             'Бизнес',
@@ -19,6 +19,7 @@ class TagSeeds extends Seeder
             'Политика',
             'Юмор'
         ];
+
         foreach ($tags as $tag)
         {
             \App\Tag::create(['title'=>$tag]);
