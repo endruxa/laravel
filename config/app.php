@@ -163,8 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Spatie\Glide\GlideServiceProvider::class,
-        Dan\UploadImage\UploadImageServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -180,7 +179,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+        Spatie\Glide\GlideServiceProvider::class,
+        Dan\UploadImage\UploadImageServiceProvider::class,
 
 
     ],
@@ -236,6 +236,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'GlideImage' => Spatie\Glide\GlideImageFacade::class,
         'UploadImage' => Dan\UploadImage\UploadImageFacade::class,
+
     ],
 
 ];

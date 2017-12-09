@@ -24,6 +24,13 @@ Route::get('about', 'HomeController@about')->name('about');
  */
 Route::get('blog/tag/{tag_slug}', 'TagController@index')->name('tag');
 
+
+/*
+ * UploadFile
+ */
+Route::post('upload', 'UploadController@uploadFile')->name('upload');
+
+
 /*
  * Articles area
  */
