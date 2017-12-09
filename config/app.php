@@ -181,6 +181,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Glide\GlideServiceProvider::class,
         Dan\UploadImage\UploadImageServiceProvider::class,
+        \App\Providers\FlashProvider::class
 
 
     ],
@@ -236,6 +237,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'GlideImage' => Spatie\Glide\GlideImageFacade::class,
         'UploadImage' => Dan\UploadImage\UploadImageFacade::class,
+        'F' => App\Alias\FlashFacade::class
 
     ],
 

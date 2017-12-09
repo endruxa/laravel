@@ -2,13 +2,9 @@
 
 @section('content')
     @include('errors._form_errors')
-
-        {{Form::open()}}
-            @include('blog._form', ['btnText'=>'Создать'])
-        {{Form::close()}}
-    @include('uploadFile._uploadFile')
-
-
+    {{ Form::open(['files' => true]) }}
+    @include('blog._form', ['btnText' => 'Создать'])
+    {{ Form::close() }}
 @endsection
 
-@section('title', 'Добавить запсиь в блог')
+@section('title', 'Добавить запись в блог')

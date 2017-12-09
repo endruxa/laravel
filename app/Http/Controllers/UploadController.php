@@ -1,71 +1,45 @@
 <?php
 namespace App\Http\Controllers;
-
-use App\Article;
-use App\Http\Requests\BlogRequestController;
-use App\UploadFile;
-use File;
 use Illuminate\Http\Request;
-use DB;
-use Illuminate\Support\Facades\Input;
-use League\Flysystem\Exception;
-use UploadImage;
-use Dan\UploadImage\Exceptions\UploadImageException;
+
 /**
  * Class UploadController
  * @package App\Http\Controllers
  */
 class UploadController extends Controller
 {
-
     public function index()
     {
-        return view('uploadFile._uploadFile');
+        return view('upload.index');
     }
 
-
-    public function upload(Request $request)
+    /**
+     * @param Request $request
+     */
+    public function loadFile(Request $request)
     {
-
-
-    }
-
-    private function getName($file)
-    {
-
-    }
-
-    public function move(Request $request, $file)
-    {
-        $file_path = [];
-        if ($request->hasFile('file_name')) {
-            foreach ($request->file('file_name') as $file) {
-                $path = $file->move('multiple-images', $this->getName($file));
-                $file_path[] = $path->getPathname();
+        $allPath = [];
+        if($request->hasFile('photo')){
+            foreach($request->file('photo') as $file) {
+                // $path = $file->store('multiple-images', $this->getName($file));
+                $path = $file->storeAs('multiple-images', $this->getName($file), 'images');
+                // $allPath[] = $path->getPathname();
+                $allPath[] = \Storage::disk('images')->url($path);
             }
         }
+        dd($allPath);
+    }
 
-           $file_name = sprintf(
+    /**
+     * @param $file
+     * @return string
+     */
+    private function getName($file)
+    {
+        return sprintf(
             '%s_%s',
             time(),
             $file->getClientOriginalName()
         );
-
-        try {
-            DB::beginTransaction();
-             UploadFile::create([
-                    'file_name' => $file_name,
-                    'File_path' => $file_path
-                ]);
-
-            DB::commit();
-
-        }catch (\Exception $e) {
-            File::delete('images', $file_name);
-            DB::rollBack();
-
-        }
-
-        return redirect()->route('blog.index');
     }
 }

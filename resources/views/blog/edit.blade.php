@@ -2,6 +2,7 @@
 
 @section('content')
     @include('errors._form_errors')
+    @include('blog._images', ['article'=>$article])
     {{ Form::model($article, ['route' => ['blog.update', 'slug' => $article->slug], 'method' => 'put']) }}
     @include('blog._form', ['btnText' => 'Редактировать'])
     {{ Form::close() }}

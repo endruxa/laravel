@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Classes\UploadImages;
 use App\Http\Requests\BlogRequestController;
-use Illuminate\Http\Request;
 use DB;
 use League\Flysystem\Exception;
 
@@ -41,7 +41,9 @@ class BlogController extends Controller
                 ->articles()
                 ->create($request->all());
             $article->tags()->attach($tagsIds);
-
+            if($request->hasFile('images')){
+                (new UploadImages($article, $request->file('images')) )->save();
+            }
             DB::commit();
             flash()->success('Новость добавлена');
 
@@ -90,12 +92,14 @@ class BlogController extends Controller
 
             $article->tags()->sync($tagsIds);
             DB::commit();
-
+            if($request->hasFile('images')) {
+                (new UploadImages($article, $request->file('images')))->save();
+            }
             flash()->success('Новость добавлена');
 
         }catch (\Exception $e){
-            flash()->danger('Новость не удалось добавить');
 
+            flash()->danger('Новость не удалось добавить');
             DB::rollBack();
         }
         return redirect()->route('blog.index');

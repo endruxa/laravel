@@ -14,13 +14,12 @@ class CreateUploadFilesTable extends Migration
     public function up()
     {
         Schema::create('upload_files', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->index();
-            $table->string('file_name')->unique();
-            $table->string('file_path')->unique();
-            $table->string('title');
+            $table->increments('id');
+            $table->integer('article_id')->unsigned();
+            $table->string('url');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 
@@ -33,8 +32,7 @@ class CreateUploadFilesTable extends Migration
     {
         Schema::table('upload_files', function (Blueprint $table)
         {
-            $table->dropForeign(['user_id']);
-            $table->dropIndex(['user_id']);
+            $table->dropForeign(['article_id']);
         });
 
         Schema::dropIfExists('upload_files');
