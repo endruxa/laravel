@@ -34,6 +34,7 @@ class BlogController extends Controller
     public function store(BlogRequestController $request)
     {
         $tagsIds = $request->get('tag_id');
+
         try {
             DB::beginTransaction();
            $article = $request
