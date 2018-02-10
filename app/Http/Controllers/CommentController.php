@@ -21,10 +21,10 @@ class CommentController extends Controller
 	public function store(Request $request)
     {
 
-		$data = $request->except('_token', 'comment_post_ID', 'comment_parent');
+		$data = $request->except('_token', 'comment_article_id', 'comment_parent');
 		
 		//добавляем поля с названиями как в таблице (модели)
-		$data['article_id'] = $request->input('comment_post_ID');
+		$data['article_id'] = $request->input('comment_article_id');
 		$data['parent_id'] = $request->input('comment_parent');
 		
 		//устанавливаем статус в зависимости от настройки
@@ -42,7 +42,7 @@ class CommentController extends Controller
 		$validator = Validator::make($data,[
 			'article_id' => 'integer|required',
 			'text' => 'required|max:255',
-			'name' => 'required|max:15|unique:users, name',
+			'name' => 'required|max:15|',
 			'email' => 'required|email',
 		]);
 
@@ -57,7 +57,6 @@ class CommentController extends Controller
 		$post = Article::find($data['article_id']);
 
 		$post->comments()->save($comment);
-		
 
 		$data['id'] = $comment->id;
 		$data['hash'] = md5($data['email']);

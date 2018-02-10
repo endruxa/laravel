@@ -16,7 +16,7 @@ class Comment extends Model
      */
     protected $guarded = [];
 
-    protected $fillable = ['name', 'email', 'text'];
+    protected $fillable = ['name', 'email', 'text', 'parent_id', 'status'];
 
     /**
      * Связь с моделью Article

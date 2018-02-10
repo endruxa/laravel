@@ -5,7 +5,7 @@ addComment = {
             b = m.I(i),
             l = m.I("cancel-comment-reply-link"),
             j = m.I("comment_parent"),
-            k = m.I("comment_post_ID");
+            k = m.I("comment_article_id");
         if (!h || !b || !l || !j) {
 			alert(1);
             return

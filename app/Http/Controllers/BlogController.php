@@ -6,6 +6,7 @@ use App\Article;
 use App\Classes\UploadImages;
 use App\Http\Requests\BlogRequestController;
 use DB;
+use Illuminate\Support\Facades\Request;
 use League\Flysystem\Exception;
 
 /**

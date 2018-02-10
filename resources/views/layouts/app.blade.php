@@ -8,8 +8,8 @@
     <title>@yield('title', config('app.name'))</title>
     @section('css')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="all" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" type="text/css" media="all" href="{{asset('comments/css/comments.css')}}">
+    <link rel="stylesheet" type="text/css" media="all" href="{{asset('/css/app.css')}}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{asset('/comments/css/comments.css')}}" />
 
     @show
 </head>
@@ -32,9 +32,10 @@
 @yield('ad')
 
     @section('js')
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript" src="{{asset('comments/js/comment-reply.js')}}"></script>
-    <script type="text/javascript" src="{{asset('comments/js/comment-scripts.js')}}"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
+    {{--<script src="{{asset('/comments/jquery/jquery.min.js')}}"></script>--}}
+    <script type="text/javascript" src="{{asset('/comments/js/comment-reply.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/comments/js/comment-scripts.js')}}"></script>
     @show
     @yield('footer.js')
 </body>

@@ -71,5 +71,13 @@ class Article extends Model
         return $this->hasMany(UploadFile::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'article_id');
+    }
+
 }
 
